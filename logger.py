@@ -68,7 +68,7 @@ def put_data():
     number_journal -= 1
     # Можно добавить проверку, чтобы человек не выходил за пределы записей
     if number_file == 1:
-        print(f'Изменить данную запись\n', data_first[number_journal].split("\n"))
+        print(f'Изменить данную запись\n', data_first[number_journal].split())
     else:
         print(f'Изменить данную запись\n', data_second[number_journal].split(";"))
 
@@ -76,7 +76,7 @@ def put_data():
                     f"1 - Имя\n"
                     f"2 - Фамилия\n"
                     f"3 - Телефон\n"
-                    f"4- Адрес\n"
+                    f"4 - Адрес\n"
                     f"Выберите номер варианта: "))
                
 # name = name_data()
@@ -87,15 +87,15 @@ def put_data():
     if number_file == 1:  # Можно сделать нумерацию внутри файла
         # data_first = data_first[:number_journal] + [f'{name}\n{surname}\n{phone}\n{address}\n'] + \
         #              data_first[number_journal + 1:]
-        item_list=data_first[number_journal].split("\n")
+        item_list=data_first[number_journal].split()
         if var==1:
-            change_string=name_data()+'\n'+item_list[2]+'\n'+item_list[3]+'\n'+item_list[4]+'\n'
+            change_string=name_data()+'\n'+item_list[1]+'\n'+item_list[2]+'\n'+item_list[3]+'\n'
         elif var==2:
-            change_string=name = item_list[1]+'\n'+surname_data()+'\n'+item_list[3]+'\n'+item_list[4]+'\n'
+            change_string=name = item_list[0]+'\n'+surname_data()+'\n'+item_list[2]+'\n'+item_list[3]+'\n'
         elif var==3:
-            change_string=name = item_list[1]+'\n'+item_list[2]+'\n'+phone_data()+'\n'+item_list[4]+'\n'
+            change_string=name = item_list[0]+'\n'+item_list[1]+'\n'+phone_data()+'\n'+item_list[3]+'\n'
         elif var==4:
-            change_string=name = item_list[1]+'\n'+item_list[2]+'\n'+item_list[3]+'\n'+address_data()+'\n'  
+            change_string=name = item_list[0]+'\n'+item_list[1]+'\n'+item_list[2]+'\n'+address_data()+'\n'  
         data_first = data_first[:number_journal] + [change_string] + data_first[number_journal + 1:]
         with open('data_first_variant.txt', 'w', encoding='utf-8') as file:
             file.write(''.join(data_first))
